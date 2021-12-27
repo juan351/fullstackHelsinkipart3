@@ -1,0 +1,27 @@
+{
+  "name": "persons",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juan351/fullstackHelsinkipart3.git"
+  },
+  "author": "Juan Montivero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juan351/fullstackHelsinkipart3/issues"
+  },
+  "homepage": "https://github.com/juan351/fullstackHelsinkipart3#readme"
+}
