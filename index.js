@@ -46,7 +46,7 @@ app.delete('/api/persons/:id', (request, response) => {
     
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body
     
     if(!body.name) {
@@ -69,6 +69,7 @@ app.post('/api/persons', (request, response) => {
     person.save().then(savedPerson => {
         response.json(savedPerson)
     })
+    .catch(error => next(error))
     
 })
 
@@ -91,9 +92,11 @@ app.put('/api/persons/:id', (request, response, next) => {
 const errorHandler = (error, request, response, next) => {
     console.error(error.message)
     if (error.name === 'CastError') {
-        returnresponse.status(400).send({error: 'malformatted id'})
+        return response.status(400).send({error: 'malformatted id'})
+    } else if (error.name === 'ValidatorError'){
+        return response.status(400).send( {error: error.message})
     }
-    next (error)
+    next(error)
 }
 
 app.use(errorHandler)
